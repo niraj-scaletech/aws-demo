@@ -1,0 +1,20 @@
+{
+  "name": "aws-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "node dist/index.js",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "zip -r index.zip dist/* node_modules/*",
+    "copy:assets": "cp -r src/data dist/data",
+    "run:build": "npm run prebuild && npm run build  && npm run copy:assets && npm run postbuild"
+  },
+  "author": "Niraj visavadiya",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.14.1",
+    "@types/validator": "^13.7.12"
+  }
+}

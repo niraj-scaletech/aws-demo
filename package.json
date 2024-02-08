@@ -4,17 +4,25 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "copy:assets": "cp -r src/data dist/data",
+    "create:build": "npm run build  && npm run copy:assets && npm run postbuild",
     "start": "node dist/index.js",
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "postbuild": "zip -r index.zip dist/* node_modules/*",
-    "copy:assets": "cp -r src/data dist/data",
-    "run:build": "npm run prebuild && npm run build  && npm run copy:assets && npm run postbuild"
+    "run:build": "npm run prebuild && npm run build && npm run postbuild"
   },
   "author": "Niraj visavadiya",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.14.1",
     "@types/validator": "^13.7.12"
+  },
+  "dependencies": {
+    "@aws-sdk/client-mediaconvert": "^3.281.0",
+    "axios": "^1.6.6",
+    "dotenv": "^16.4.1",
+    "firebase-admin": "^12.0.0",
+    "uuidv4": "^6.2.13"
   }
 }

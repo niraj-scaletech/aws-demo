@@ -19,10 +19,10 @@ export const MEDIA_CONVERT_PARAMS = {
               CodecSettings: {
                 Codec: "H_264",
                 H264Settings: {
-                  MaxBitrate: 1000000,
+                  FramerateControl: "INITIALIZE_FROM_SOURCE",
                   RateControlMode: "QVBR",
                   SceneChangeDetect: "TRANSITION_DETECTION",
-                  QualityTuningLevel: "SINGLE_PASS",
+                  QualityTuningLevel: "MULTI_PASS_HQ",
                 },
               },
             },
@@ -42,13 +42,12 @@ export const MEDIA_CONVERT_PARAMS = {
             OutputSettings: {
               HlsSettings: {},
             },
-            NameModifier: "-convert",
           },
         ],
         OutputGroupSettings: {
           Type: "HLS_GROUP_SETTINGS",
           HlsGroupSettings: {
-            SegmentLength: 10,
+            SegmentLength: 5,
             Destination: "",
             DestinationSettings: {
               S3Settings: {
@@ -58,6 +57,13 @@ export const MEDIA_CONVERT_PARAMS = {
               },
             },
             MinSegmentLength: 0,
+          },
+        },
+        AutomatedEncodingSettings: {
+          AbrSettings: {
+            MaxRenditions: 5,
+            MaxAbrBitrate: 1000000,
+            MinAbrBitrate: 100000,
           },
         },
       },

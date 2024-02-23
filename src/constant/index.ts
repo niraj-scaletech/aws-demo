@@ -47,7 +47,7 @@ export const MEDIA_CONVERT_PARAMS = {
         OutputGroupSettings: {
           Type: "HLS_GROUP_SETTINGS",
           HlsGroupSettings: {
-            SegmentLength: 5,
+            SegmentLength: 3,
             Destination: "",
             DestinationSettings: {
               S3Settings: {
